@@ -1,0 +1,291 @@
+:root {
+    --dark: #34495E;
+    --light: #eaeaeab4;
+    --success: #0abf30;
+    --error: #e24D4C;
+    --info: #3498DB;
+    --warning: #E9BD0C;
+}
+
+body {
+    /* background-image: linear-gradient(to right, #ff6e7f, #bfe9ff); */
+    background-image: url('https://source.unsplash.com/1920x1080/?github');
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.container .card {
+    max-width: 540px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.349);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.input-group {
+    width: 70%;
+    max-width: 540px;
+    display: flex;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.25);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.input-group .form-control {
+    background: none;
+}
+
+.input-group .form-control::placeholder {
+    font-family: "Lumanosimo";
+    font-size: 0.80em;
+    color: #ffffff;
+    font-style: italic;
+}
+
+.input-group .form-control:focus {
+    background: none;
+    border: none;
+    outline: none;
+    color: #ff6e7f;
+
+}
+
+.search .input-group .input-group-append .btn {
+    color: #ff6e7f
+}
+
+.addInfo {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.addInfo .card-text {
+    padding-right: 7px;
+    padding-left: 7px;
+    color: #ffffff;
+    border-right: 2px solid #ff6e7f;
+
+}
+
+.card-text:last-child {
+    border: none;
+}
+
+.card-text:first-child {
+    padding-left: 0px;
+}
+
+.profileImg {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.profileImg .img-fluid {
+    width: 70%;
+    border-radius: 100%;
+    box-shadow: 0 0 32px 10px rgba(191, 233, 255, 0.37);
+}
+
+.userName {
+    font-family: "Orbitron";
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 25px;
+}
+
+.userBio {
+    font-family: "Orbitron";
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 10px;
+    padding-right: 15px;
+}
+
+.notifications {
+    font-size: 11px;
+    position: fixed;
+    top: 30px;
+    right: 20px;
+    list-style: none;
+    padding: 0px;
+}
+
+.notifications :where(.toast, .column) {
+    display: flex;
+    align-items: center;
+}
+
+.notifications .toast {
+    width: 430px;
+    position: relative;
+    overflow: hidden;
+    list-style: none;
+    border-radius: 20px;
+    padding: 16px 17px;
+    margin-bottom: 10px;
+    justify-content: space-between;
+    animation: show_toast 0.4s ease forwards;
+}
+
+@keyframes show_toast {
+    0% {
+        transform: translateX(100%);
+    }
+
+    40% {
+        transform: translateX(-10%);
+    }
+
+    80% {
+        transform: translateX(5%);
+    }
+
+    100% {
+        transform: translateX(-5px);
+    }
+}
+
+.notifications .toast.passive {
+    animation: hide_toast 0.4s ease forwards;
+}
+
+@keyframes hide_toast {
+    0% {
+        transform: translateX(-5px);
+    }
+
+    40% {
+        transform: translateX(5%);
+    }
+
+    80% {
+        transform: translateX(-10%);
+    }
+
+    100% {
+        transform: translateX(calc(100% + 20px));
+    }
+}
+
+.toast::before {
+    position: absolute;
+    content: "";
+    height: 3px;
+    width: 100%;
+    bottom: 0px;
+    left: 0px;
+    animation: progress 5s linear forwards;
+}
+
+@keyframes progress {
+    100% {
+        width: 0%;
+    }
+
+}
+
+.toast.success::before {
+    background: var(--success);
+}
+
+.toast.success .column i {
+    color: var(--success);
+}
+
+.toast.error::before {
+    background: var(--error);
+}
+
+.toast.error .column i {
+    color: var(--error);
+}
+
+.toast.warning::before {
+    background: var(--warning);
+}
+
+.toast.warning .column i {
+    color: var(--warning);
+}
+
+.toast.inform::before {
+    background: var(--info);
+}
+
+.toast.inform .column i {
+    color: var(--info);
+}
+
+.toast .column i {
+    font-size: 1.1rem;
+}
+
+.toast .column span {
+    font-family: 'Lumanosimo', cursive;
+    font-size: 11px;
+    margin-left: 10px;
+}
+
+.toast i:last-child {
+    font-size: 0.85rem;
+    cursor: pointer;
+}
+
+.toast i:last-child:hover {
+    color: var(--dark);
+}
+
+@media screen and (max-width: 530px) {
+    .notifications {
+        width: 90%;
+    }
+
+    .notifications .toast {
+        width: 90%;
+        font-size: 0.6rem;
+        margin-left: 20px;
+    }
+}
+
+/* .reposdiv{
+    font-family: "Orbitron";
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 10px;
+    padding-right: 15px;
+} */
+.repoelement {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.349);
+    box-shadow: 0 8px 32px 0 rgba(191, 233, 255, 0.37);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border-radius: 10px;
+    border: 1px solid rgba(191, 233, 255, 0.18);
+    padding: 0.25rem 0.5rem;
+    color: #000;
+    font-family: 'Lumanosimo', cursive;
+    font-size: 10px;
+    margin-bottom: 0.4rem;
+    margin-right: 0.2rem;
+}
